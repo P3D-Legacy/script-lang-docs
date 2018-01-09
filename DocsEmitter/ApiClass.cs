@@ -12,26 +12,12 @@ namespace DocsEmitter
         public string Name;
         public ApiMethod[] Methods;
 
-        private const string API_CLASS_TYPENAME = "net.Pokemon3D.Game.Scripting.V3.ApiClasses.ApiClass";
-        private const string API_CLASS_ATTRIBUTE_TYPENAME = "net.Pokemon3D.Game.Scripting.V3.ApiClasses.ApiClassAttribute";
-        private const string API_METHOD_SIGNATURE_ATTRIBUTE_TYPENAME = "net.Pokemon3D.Game.Scripting.V3.ApiMethodSignatureAttribute";
-
-        private static string GetTypeName(Type type)
-        {
-            var name = type.Name;
-            if (type == typeof(NetUndefined)) {
-                name = "undefined";
-            }
-
-            return name.Substring(0, 1).ToLower() + name.Substring(1);
-        }
-
         public static ApiClass[] GetApiClasses(Assembly assembly)
         {
             // load types
-            var apiClassType = assembly.GetType(API_CLASS_TYPENAME);
-            var apiClassAttributeType = assembly.GetType(API_CLASS_ATTRIBUTE_TYPENAME);
-            var apiMethodSignatureAttributeType = assembly.GetType(API_METHOD_SIGNATURE_ATTRIBUTE_TYPENAME);
+            var apiClassType = assembly.GetType(TypeHelper.API_CLASS_TYPENAME);
+            var apiClassAttributeType = assembly.GetType(TypeHelper.API_CLASS_ATTRIBUTE_TYPENAME);
+            var apiMethodSignatureAttributeType = assembly.GetType(TypeHelper.API_METHOD_SIGNATURE_ATTRIBUTE_TYPENAME);
 
             // gather api classes:
             var results = new List<ApiClass>();
@@ -66,8 +52,8 @@ namespace DocsEmitter
                         {
                             OptionalNum = optionalNum,
                             ParamNames = paramNames,
-                            ParamTypes = paramTypes.Select(pt => GetTypeName(pt)).ToArray(),
-                            ReturnTypes = returnTypes.Select(pt => GetTypeName(pt)).ToArray()
+                            ParamTypes = paramTypes.Select(pt => TypeHelper.GetTypeName(pt)).ToArray(),
+                            ReturnTypes = returnTypes.Select(pt => TypeHelper.GetTypeName(pt, returnTypes.Length)).ToArray()
                         };
 
                         clMethodSignatures.Add(methodSignature);

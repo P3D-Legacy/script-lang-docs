@@ -26,7 +26,8 @@ namespace DocsEmitter
             var assembly = Assembly.LoadFile(GetAssemblyPath());
 
             var apiClasses = ApiClass.GetApiClasses(assembly);
-            var emitter = new PageEmitter(apiClasses, new ApiProtoype[0]);
+            var prototypes = ApiPrototype.GetApiPrototypes(assembly);
+            var emitter = new PageEmitter(apiClasses, prototypes);
             emitter.Emit();
         }
     }

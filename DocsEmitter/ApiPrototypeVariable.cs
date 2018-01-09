@@ -1,7 +1,8 @@
 ﻿namespace DocsEmitter
 {
-    struct ApiProtoype
+    struct ApiPrototypeVariable
     {
         public string Name;
+        public string Type;
     }
 }

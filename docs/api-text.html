@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>P3D Docs - Text</title>
+    <title>Text - P3D Docs</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="nav">
                 <h3>Navigation</h3>
                 <div>
-                    <h4>Api Classes</h4><ul><li><a href="api-chat.html">Chat</a></li><li><a href="api-text.html">Text</a></li></ul><h4>Prototypes</h4><ul></ul>
+                    <h4>Api Classes</h4><ul><li><a href="api-chat.html">Chat</a></li><li><a href="api-text.html">Text</a></li></ul><h4>Prototypes</h4><ul><li><a href="proto-ability.html">Ability</a></li><li><a href="proto-battle.html">Battle</a></li><li><a href="proto-camera.html">Camera</a></li><li><a href="proto-daycare.html">Daycare</a></li><li><a href="proto-entity.html">Entity</a></li><li><a href="proto-item.html">Item</a></li><li><a href="proto-move.html">Move</a></li><li><a href="proto-pokemon.html">Pokemon</a></li><li><a href="proto-trainer.html">Trainer</a></li><li><a href="proto-vector3.html">Vector3</a></li></ul>
                 </div>
             </div>
             <div class="docs">
@@ -25,9 +25,10 @@
 <code>
     <span class="arg-type">import</span> Text <span class="arg-type">from</span> "Text";<br />
     ...<br />
-    <b>Text</b>.<i>method</i>(args);
+    <b>Text</b>.method(args);
 </code>
 
+<hr />
 <h3>Methods</h3>
 <div>
     <ul><li><a href="#method-debug">debug</a></li>
@@ -36,9 +37,10 @@
 <li><a href="#method-setFont">setFont</a></li>
 <li><a href="#method-show">show</a></li></ul>
 </div>
+
 <hr />
 <div>
-    <h4 id="method-debug">debug</h4><i>Static</i><br />Signatures:<br /><br /><div><code>Return: <span class="arg-type">undefined</span></code><code>Arguments: <span class="arg-type">string</span> message</code></div><hr /><h4 id="method-log">log</h4><i>Static</i><br />Signatures:<br /><br /><div><code>Return: <span class="arg-type">undefined</span></code><code>Arguments: <span class="arg-type">string</span> message</code></div><hr /><h4 id="method-setColor">setColor</h4><i>Static</i><br />Signatures:<br /><br /><div><code>Return: <span class="arg-type">undefined</span></code><code>Arguments: <span class="arg-type">string</span> colorType</code></div><br /><div><code>Return: <span class="arg-type">undefined</span></code><code>Arguments: <span class="arg-type">int32</span> red, <span class="arg-type">int32</span> green, <span class="arg-type">int32</span> blue, [<span class="arg-type">int32</span> alpha]</code></div><hr /><h4 id="method-setFont">setFont</h4><i>Static</i><br />Signatures:<br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string</span> fontName</code></div><hr /><h4 id="method-show">show</h4><i>Static</i><br />Signatures:<br /><br /><div><code>Return: <span class="arg-type">undefined</span></code><code>Arguments: <span class="arg-type">string</span> message</code></div><hr />
+    <h4 id="method-debug">debug</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">string</span> message</code><code>Usage: Text.<b>debug</b>(message);</code></div><hr /><h4 id="method-log">log</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">string</span> message</code><code>Usage: Text.<b>log</b>(message);</code></div><hr /><h4 id="method-setColor">setColor</h4><i>Static</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">string</span> colorType</code><code>Usage: Text.<b>setColor</b>(colorType);</code></div><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">int</span> red, <span class="arg-type">int</span> green, <span class="arg-type">int</span> blue, [<span class="arg-type">int</span> alpha]</code><code>Usage: Text.<b>setColor</b>(red, green, blue, [alpha]);</code></div><hr /><h4 id="method-setFont">setFont</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string</span> fontName</code><code>Usage: <span class="arg-type">var</span> result = Text.<b>setFont</b>(fontName);</code></div><hr /><h4 id="method-show">show</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">string</span> message</code><code>Usage: Text.<b>show</b>(message);</code></div><hr />
 </div>
 
             </div>

@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Camera - P3D Docs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>Pokemon3D Script API Documentation</h1>
+        </div>
+        <div class="content">
+            <div class="nav">
+                <h3>Navigation</h3>
+                <div>
+                    <h4>Api Classes</h4><ul><li><a href="api-chat.html">Chat</a></li><li><a href="api-text.html">Text</a></li></ul><h4>Prototypes</h4><ul><li><a href="proto-ability.html">Ability</a></li><li><a href="proto-battle.html">Battle</a></li><li><a href="proto-camera.html">Camera</a></li><li><a href="proto-daycare.html">Daycare</a></li><li><a href="proto-entity.html">Entity</a></li><li><a href="proto-item.html">Item</a></li><li><a href="proto-move.html">Move</a></li><li><a href="proto-pokemon.html">Pokemon</a></li><li><a href="proto-trainer.html">Trainer</a></li><li><a href="proto-vector3.html">Vector3</a></li></ul>
+                </div>
+            </div>
+            <div class="docs">
+                <h2>
+    Camera
+</h2>
+
+<p>API documention for the Prototype Camera.</p>
+<h3>Usage</h3>
+<code>
+    <span class="arg-type">var</span> instance = <span class="arg-type">new</span> <b>Camera</b>(args);<br />
+    ...<br />
+    <b>instance</b>.method(args);
+</code>
+
+<hr />
+<h3>Index</h3>
+<div>
+    <ul><li><a href="#ctor">Constructor</a></li><li><a href="#vars">Variables</a></li><li><a href="#get-set">Getters &amp; Setters</a><ul><li><a href="#get-fixed">(get) fixed</a></li>
+<li><a href="#get-pitch">(get) pitch</a></li>
+<li><a href="#get-position">(get) position</a></li>
+<li><a href="#get-thirdPerson">(get) thirdPerson</a></li>
+<li><a href="#get-x">(get) x</a></li>
+<li><a href="#get-y">(get) y</a></li>
+<li><a href="#get-yaw">(get) yaw</a></li>
+<li><a href="#get-z">(get) z</a></li>
+<li><a href="#set-fixed">(set) fixed</a></li>
+<li><a href="#set-focusId">(set) focusId</a></li>
+<li><a href="#set-focusType">(set) focusType</a></li>
+<li><a href="#set-pitch">(set) pitch</a></li>
+<li><a href="#set-position">(set) position</a></li>
+<li><a href="#set-thirdPerson">(set) thirdPerson</a></li>
+<li><a href="#set-x">(set) x</a></li>
+<li><a href="#set-y">(set) y</a></li>
+<li><a href="#set-yaw">(set) yaw</a></li>
+<li><a href="#set-z">(set) z</a></li></ul></li><li><a href="#methods">Methods</a><ul><li><a href="#method-resetFocus">resetFocus</a></li>
+<li><a href="#method-setBehindPlayer">setBehindPlayer</a></li>
+<li><a href="#method-setupFocus">setupFocus</a></li>
+<li><a href="#method-update">update</a></li></ul></li></ul>
+</div>
+
+<hr />
+<h3 id="ctor">Constructor</h3>
+<div>
+    <code><span class="arg-type">var</span> c = <span class="arg-type">new</span> <b>Camera</b>();</code>
+</div>
+
+<h3 id="vars">Variables</h3>
+<div>
+    -- No Variables --
+</div>
+
+<h3 id="get-set">Getters &amp; Setters</h3>
+<div>
+    <h4 id="get-fixed">(get) fixed</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: <span class="arg-type">var</span> fixed = Camera.<b>fixed</b>;</code></div><hr /><h4 id="get-pitch">(get) pitch</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> pitch = Camera.<b>pitch</b>;</code></div><hr /><h4 id="get-position">(get) position</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3Prototype</a></span></code><code>Usage: <span class="arg-type">var</span> position = Camera.<b>position</b>;</code></div><hr /><h4 id="get-thirdPerson">(get) thirdPerson</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: <span class="arg-type">var</span> thirdPerson = Camera.<b>thirdPerson</b>;</code></div><hr /><h4 id="get-x">(get) x</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> x = Camera.<b>x</b>;</code></div><hr /><h4 id="get-y">(get) y</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> y = Camera.<b>y</b>;</code></div><hr /><h4 id="get-yaw">(get) yaw</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> yaw = Camera.<b>yaw</b>;</code></div><hr /><h4 id="get-z">(get) z</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> z = Camera.<b>z</b>;</code></div><hr /><h4 id="set-fixed">(set) fixed</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: Camera.<b>fixed</b> = <i>fixed</i>;</code></div><hr /><h4 id="set-focusId">(set) focusId</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">void</span></code><code>Usage: Camera.<b>focusId</b> = <i>focusId</i>;</code></div><hr /><h4 id="set-focusType">(set) focusType</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">void</span></code><code>Usage: Camera.<b>focusType</b> = <i>focusType</i>;</code></div><hr /><h4 id="set-pitch">(set) pitch</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Camera.<b>pitch</b> = <i>pitch</i>;</code></div><hr /><h4 id="set-position">(set) position</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3Prototype</a></span></code><code>Usage: Camera.<b>position</b> = <i>position</i>;</code></div><hr /><h4 id="set-thirdPerson">(set) thirdPerson</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: Camera.<b>thirdPerson</b> = <i>thirdPerson</i>;</code></div><hr /><h4 id="set-x">(set) x</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Camera.<b>x</b> = <i>x</i>;</code></div><hr /><h4 id="set-y">(set) y</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Camera.<b>y</b> = <i>y</i>;</code></div><hr /><h4 id="set-yaw">(set) yaw</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Camera.<b>yaw</b> = <i>yaw</i>;</code></div><hr /><h4 id="set-z">(set) z</h4><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Camera.<b>z</b> = <i>z</i>;</code></div><hr />
+</div>
+
+<h3 id="methods">Methods</h3>
+<div>
+    <h4 id="method-resetFocus">resetFocus</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Usage: Camera.<b>resetFocus</b>();</code></div><hr /><h4 id="method-setBehindPlayer">setBehindPlayer</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> result = Camera.<b>setBehindPlayer</b>();</code></div><hr /><h4 id="method-setupFocus">setupFocus</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">string</span> type, <span class="arg-type">int</span> id</code><code>Usage: Camera.<b>setupFocus</b>(type, id);</code></div><hr /><h4 id="method-update">update</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Usage: Camera.<b>update</b>();</code></div><hr />
+</div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

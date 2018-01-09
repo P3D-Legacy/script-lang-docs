@@ -1,0 +1,116 @@
+<html>
+<head>
+    <title>Pokemon - P3D Docs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>Pokemon3D Script API Documentation</h1>
+        </div>
+        <div class="content">
+            <div class="nav">
+                <h3>Navigation</h3>
+                <div>
+                    <h4>Api Classes</h4><ul><li><a href="api-chat.html">Chat</a></li><li><a href="api-text.html">Text</a></li></ul><h4>Prototypes</h4><ul><li><a href="proto-ability.html">Ability</a></li><li><a href="proto-battle.html">Battle</a></li><li><a href="proto-camera.html">Camera</a></li><li><a href="proto-daycare.html">Daycare</a></li><li><a href="proto-entity.html">Entity</a></li><li><a href="proto-item.html">Item</a></li><li><a href="proto-move.html">Move</a></li><li><a href="proto-pokemon.html">Pokemon</a></li><li><a href="proto-trainer.html">Trainer</a></li><li><a href="proto-vector3.html">Vector3</a></li></ul>
+                </div>
+            </div>
+            <div class="docs">
+                <h2>
+    Pokemon
+</h2>
+
+<p>API documention for the Prototype Pokemon.</p>
+<h3>Usage</h3>
+<code>
+    <span class="arg-type">var</span> instance = <span class="arg-type">new</span> <b>Pokemon</b>(args);<br />
+    ...<br />
+    <b>instance</b>.method(args);
+</code>
+
+<hr />
+<h3>Index</h3>
+<div>
+    <ul><li><a href="#ctor">Constructor</a></li><li><a href="#vars">Variables</a></li><li><a href="#get-set">Getters &amp; Setters</a><ul><li><a href="#get-ability">(get) ability</a></li>
+<li><a href="#get-additionalData">(get) additionalData</a></li>
+<li><a href="#get-canSwim">(get) canSwim</a></li>
+<li><a href="#get-catchBall">(get) catchBall</a></li>
+<li><a href="#get-catchLocation">(get) catchLocation</a></li>
+<li><a href="#get-catchMethod">(get) catchMethod</a></li>
+<li><a href="#get-catchTrainer">(get) catchTrainer</a></li>
+<li><a href="#get-displayName">(get) displayName</a></li>
+<li><a href="#get-EVs">(get) EVs</a></li>
+<li><a href="#get-exp">(get) exp</a></li>
+<li><a href="#get-friendship">(get) friendship</a></li>
+<li><a href="#get-gender">(get) gender</a></li>
+<li><a href="#get-giveEVs">(get) giveEVs</a></li>
+<li><a href="#get-hp">(get) hp</a></li>
+<li><a href="#get-id">(get) id</a></li>
+<li><a href="#get-isEgg">(get) isEgg</a></li>
+<li><a href="#get-isShiny">(get) isShiny</a></li>
+<li><a href="#get-item">(get) item</a></li>
+<li><a href="#get-IVs">(get) IVs</a></li>
+<li><a href="#get-level">(get) level</a></li>
+<li><a href="#get-name">(get) name</a></li>
+<li><a href="#get-nature">(get) nature</a></li>
+<li><a href="#get-nickname">(get) nickname</a></li>
+<li><a href="#get-ot">(get) ot</a></li>
+<li><a href="#get-stats">(get) stats</a></li>
+<li><a href="#get-status">(get) status</a></li>
+<li><a href="#get-translatedName">(get) translatedName</a></li>
+<li><a href="#get-types">(get) types</a></li>
+<li><a href="#set-ability">(set) ability</a></li>
+<li><a href="#set-additionalData">(set) additionalData</a></li>
+<li><a href="#set-catchBall">(set) catchBall</a></li>
+<li><a href="#set-catchLocation">(set) catchLocation</a></li>
+<li><a href="#set-catchMethod">(set) catchMethod</a></li>
+<li><a href="#set-catchTrainer">(set) catchTrainer</a></li>
+<li><a href="#set-exp">(set) exp</a></li>
+<li><a href="#set-friendship">(set) friendship</a></li>
+<li><a href="#set-gender">(set) gender</a></li>
+<li><a href="#set-hp">(set) hp</a></li>
+<li><a href="#set-isShiny">(set) isShiny</a></li>
+<li><a href="#set-item">(set) item</a></li>
+<li><a href="#set-nature">(set) nature</a></li>
+<li><a href="#set-nickname">(set) nickname</a></li>
+<li><a href="#set-ot">(set) ot</a></li>
+<li><a href="#set-status">(set) status</a></li></ul></li><li><a href="#methods">Methods</a><ul><li><a href="#method-addMove">addMove</a></li>
+<li><a href="#method-canEvolve">canEvolve</a></li>
+<li><a href="#method-clearMoves">clearMoves</a></li>
+<li><a href="#method-cry">cry</a></li>
+<li><a href="#method-getLegendaryIds">getLegendaryIds</a></li>
+<li><a href="#method-getMoves">getMoves</a></li>
+<li><a href="#method-getSprite">getSprite</a></li>
+<li><a href="#method-heal">heal</a></li>
+<li><a href="#method-reload">reload</a></li>
+<li><a href="#method-removeMoveAt">removeMoveAt</a></li>
+<li><a href="#method-setEV">setEV</a></li>
+<li><a href="#method-setIV">setIV</a></li></ul></li></ul>
+</div>
+
+<hr />
+<h3 id="ctor">Constructor</h3>
+<div>
+    <h4 id="method-constructor">constructor</h4><br />Signatures:<br /><div><code>Arguments: <span class="arg-type">string</span> rawData</code><code>Usage: <span class="arg-type">var</span> p = <span class="arg-type">new</span> <b>Pokemon</b>(rawData);</code></div><br /><div><code>Arguments: <span class="arg-type">int</span> id, <span class="arg-type">int</span> level, [<span class="arg-type">string</span> additionalData]</code><code>Usage: <span class="arg-type">var</span> p = <span class="arg-type">new</span> <b>Pokemon</b>(id, level, [additionalData]);</code></div><hr />
+</div>
+
+<h3 id="vars">Variables</h3>
+<div>
+    -- No Variables --
+</div>
+
+<h3 id="get-set">Getters &amp; Setters</h3>
+<div>
+    <h4 id="get-ability">(get) ability</h4><br /><div><code>Type: <span class="arg-type"><a href="proto-ability.html">AbilityPrototype</a></span></code><code>Usage: <span class="arg-type">var</span> ability = p.<b>ability</b>;</code></div><hr /><h4 id="get-additionalData">(get) additionalData</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> additionalData = p.<b>additionalData</b>;</code></div><hr /><h4 id="get-canSwim">(get) canSwim</h4><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: <span class="arg-type">var</span> canSwim = p.<b>canSwim</b>;</code></div><hr /><h4 id="get-catchBall">(get) catchBall</h4><br /><div><code>Type: <span class="arg-type"><a href="proto-item.html">ItemPrototype</a></span></code><code>Usage: <span class="arg-type">var</span> catchBall = p.<b>catchBall</b>;</code></div><hr /><h4 id="get-catchLocation">(get) catchLocation</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> catchLocation = p.<b>catchLocation</b>;</code></div><hr /><h4 id="get-catchMethod">(get) catchMethod</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> catchMethod = p.<b>catchMethod</b>;</code></div><hr /><h4 id="get-catchTrainer">(get) catchTrainer</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> catchTrainer = p.<b>catchTrainer</b>;</code></div><hr /><h4 id="get-displayName">(get) displayName</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> displayName = p.<b>displayName</b>;</code></div><hr /><h4 id="get-EVs">(get) EVs</h4><br /><div><code>Type: <span class="arg-type">object</span></code><code>Usage: <span class="arg-type">var</span> EVs = p.<b>EVs</b>;</code></div><hr /><h4 id="get-exp">(get) exp</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> exp = p.<b>exp</b>;</code></div><hr /><h4 id="get-friendship">(get) friendship</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> friendship = p.<b>friendship</b>;</code></div><hr /><h4 id="get-gender">(get) gender</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> gender = p.<b>gender</b>;</code></div><hr /><h4 id="get-giveEVs">(get) giveEVs</h4><br /><div><code>Type: <span class="arg-type">object</span></code><code>Usage: <span class="arg-type">var</span> giveEVs = p.<b>giveEVs</b>;</code></div><hr /><h4 id="get-hp">(get) hp</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> hp = p.<b>hp</b>;</code></div><hr /><h4 id="get-id">(get) id</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> id = p.<b>id</b>;</code></div><hr /><h4 id="get-isEgg">(get) isEgg</h4><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: <span class="arg-type">var</span> isEgg = p.<b>isEgg</b>;</code></div><hr /><h4 id="get-isShiny">(get) isShiny</h4><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: <span class="arg-type">var</span> isShiny = p.<b>isShiny</b>;</code></div><hr /><h4 id="get-item">(get) item</h4><br /><div><code>Type: <span class="arg-type"><a href="proto-item.html">ItemPrototype</a></span></code><code>Usage: <span class="arg-type">var</span> item = p.<b>item</b>;</code></div><hr /><h4 id="get-IVs">(get) IVs</h4><br /><div><code>Type: <span class="arg-type">object</span></code><code>Usage: <span class="arg-type">var</span> IVs = p.<b>IVs</b>;</code></div><hr /><h4 id="get-level">(get) level</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> level = p.<b>level</b>;</code></div><hr /><h4 id="get-name">(get) name</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> name = p.<b>name</b>;</code></div><hr /><h4 id="get-nature">(get) nature</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> nature = p.<b>nature</b>;</code></div><hr /><h4 id="get-nickname">(get) nickname</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> nickname = p.<b>nickname</b>;</code></div><hr /><h4 id="get-ot">(get) ot</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> ot = p.<b>ot</b>;</code></div><hr /><h4 id="get-stats">(get) stats</h4><br /><div><code>Type: <span class="arg-type">object</span></code><code>Usage: <span class="arg-type">var</span> stats = p.<b>stats</b>;</code></div><hr /><h4 id="get-status">(get) status</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> status = p.<b>status</b>;</code></div><hr /><h4 id="get-translatedName">(get) translatedName</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> translatedName = p.<b>translatedName</b>;</code></div><hr /><h4 id="get-types">(get) types</h4><br /><div><code>Type: <span class="arg-type">string[]</span></code><code>Usage: <span class="arg-type">var</span> types = p.<b>types</b>;</code></div><hr /><h4 id="set-ability">(set) ability</h4><br /><div><code>Type: <span class="arg-type"><a href="proto-ability.html">AbilityPrototype</a></span></code><code>Usage: p.<b>ability</b> = <i>ability</i>;</code></div><hr /><h4 id="set-additionalData">(set) additionalData</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>additionalData</b> = <i>additionalData</i>;</code></div><hr /><h4 id="set-catchBall">(set) catchBall</h4><br /><div><code>Type: <span class="arg-type"><a href="proto-item.html">ItemPrototype</a></span></code><code>Usage: p.<b>catchBall</b> = <i>catchBall</i>;</code></div><hr /><h4 id="set-catchLocation">(set) catchLocation</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>catchLocation</b> = <i>catchLocation</i>;</code></div><hr /><h4 id="set-catchMethod">(set) catchMethod</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>catchMethod</b> = <i>catchMethod</i>;</code></div><hr /><h4 id="set-catchTrainer">(set) catchTrainer</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>catchTrainer</b> = <i>catchTrainer</i>;</code></div><hr /><h4 id="set-exp">(set) exp</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: p.<b>exp</b> = <i>exp</i>;</code></div><hr /><h4 id="set-friendship">(set) friendship</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: p.<b>friendship</b> = <i>friendship</i>;</code></div><hr /><h4 id="set-gender">(set) gender</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>gender</b> = <i>gender</i>;</code></div><hr /><h4 id="set-hp">(set) hp</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: p.<b>hp</b> = <i>hp</i>;</code></div><hr /><h4 id="set-isShiny">(set) isShiny</h4><br /><div><code>Type: <span class="arg-type">bool</span></code><code>Usage: p.<b>isShiny</b> = <i>isShiny</i>;</code></div><hr /><h4 id="set-item">(set) item</h4><br /><div><code>Type: <span class="arg-type"><a href="proto-item.html">ItemPrototype</a></span></code><code>Usage: p.<b>item</b> = <i>item</i>;</code></div><hr /><h4 id="set-nature">(set) nature</h4><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: p.<b>nature</b> = <i>nature</i>;</code></div><hr /><h4 id="set-nickname">(set) nickname</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>nickname</b> = <i>nickname</i>;</code></div><hr /><h4 id="set-ot">(set) ot</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>ot</b> = <i>ot</i>;</code></div><hr /><h4 id="set-status">(set) status</h4><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: p.<b>status</b> = <i>status</i>;</code></div><hr />
+</div>
+
+<h3 id="methods">Methods</h3>
+<div>
+    <h4 id="method-addMove">addMove</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type"><a href="proto-move.html">MovePrototype</a></span> move</code><code>Usage: p.<b>addMove</b>(move);</code></div><hr /><h4 id="method-canEvolve">canEvolve</h4><br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: [<span class="arg-type">string</span> trigger], [<span class="arg-type">string</span> evolutionArg]</code><code>Usage: <span class="arg-type">var</span> result = p.<b>canEvolve</b>([trigger], [evolutionArg]);</code></div><hr /><h4 id="method-clearMoves">clearMoves</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Usage: p.<b>clearMoves</b>();</code></div><hr /><h4 id="method-cry">cry</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Usage: p.<b>cry</b>();</code></div><hr /><h4 id="method-getLegendaryIds">getLegendaryIds</h4><i>Static</i><br /><br /><div><code>Return: <span class="arg-type">int[]</span></code><code>Usage: <span class="arg-type">var</span> result = Pokemon.<b>getLegendaryIds</b>();</code></div><hr /><h4 id="method-getMoves">getMoves</h4><br /><div><code>Return: <span class="arg-type"><a href="proto-move.html">MovePrototype[]</a></span></code><code>Usage: <span class="arg-type">var</span> result = p.<b>getMoves</b>();</code></div><hr /><h4 id="method-getSprite">getSprite</h4><br /><div><code>Return: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> result = p.<b>getSprite</b>();</code></div><hr /><h4 id="method-heal">heal</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: [<span class="arg-type">int</span> hp]</code><code>Usage: p.<b>heal</b>([hp]);</code></div><hr /><h4 id="method-reload">reload</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Usage: p.<b>reload</b>();</code></div><hr /><h4 id="method-removeMoveAt">removeMoveAt</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">int</span> moveIndex</code><code>Usage: p.<b>removeMoveAt</b>(moveIndex);</code></div><hr /><h4 id="method-setEV">setEV</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">string</span> evType, <span class="arg-type">int</span> value</code><code>Usage: p.<b>setEV</b>(evType, value);</code></div><hr /><h4 id="method-setIV">setIV</h4><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">string</span> ivType, <span class="arg-type">int</span> value</code><code>Usage: p.<b>setIV</b>(ivType, value);</code></div><hr />
+</div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

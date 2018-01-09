@@ -46,6 +46,10 @@ namespace DocsEmitter
             // copy css
             File.Copy(GetProjectPath("docs-templates/style.css"), GetProjectPath("docs/style.css"), true);
 
+            // copy assets
+            FileHelper.CopyFilesRecursively(new DirectoryInfo(GetProjectPath("docs-templates/assets")),
+                                            new DirectoryInfo(GetProjectPath("docs/assets")));
+
             // generate all "section" files:
             var sections = Directory.GetFiles(GetProjectPath("docs-templates/"), "*.section.html");
             foreach (var section in sections) {
@@ -81,7 +85,7 @@ namespace DocsEmitter
                 varsText = "";
                 foreach (var variable in prototype.Variables) {
                     varsText += ApiVariableToHtml(prototype.Name, variable) + Environment.NewLine;
-                    varsIndex.Add($"<li><a href=\"#var-{variable.Name}\">{variable.Name}</a></li>");
+                    varsIndex.Add($"<li>{GetImg("variable")} <a href=\"#var-{variable.Name}\">{variable.Name}</a></li>");
                 }
             }
 
@@ -96,10 +100,18 @@ namespace DocsEmitter
                     foreach (var getset in methodSet) {
                         getsetText += ApiMethodToHtml(prototype.Name, getset) + Environment.NewLine;
                         var getsetid = "get";
+                        var img = GetImg("getter", "Getter");
+                        if (getset.IsStatic) {
+                            img += GetImg("static", "Static Getter");
+                        }
                         if (getset.IsSetter) {
                             getsetid = "set";
+                            img = GetImg("setter", "Setter");
+                            if (getset.IsStatic) {
+                                img += GetImg("static", "Static Setter");
+                            }
                         }
-                        getsetIndex.Add($"<li><a href=\"#{getsetid}-{getset.Name}\">({getsetid}) {getset.Name}</a></li>");
+                        getsetIndex.Add($"<li>{img} <a href=\"#{getsetid}-{getset.Name}\">({getsetid}) {getset.Name}</a></li>");
                     }
                 }
             }
@@ -112,29 +124,44 @@ namespace DocsEmitter
                 methodsText = "";
                 foreach (var method in methods) {
                     methodsText += ApiMethodToHtml(prototype.Name, method) + Environment.NewLine;
-                    methodsIndex.Add($"<li><a href=\"#method-{method.Name}\">{method.Name}</a></li>");
+
+                    var img = GetImg("method");
+                    if (method.IsStatic) {
+                        img += GetImg("static");
+                    }
+                    methodsIndex.Add($"<li>{img} <a href=\"#method-{method.Name}\">{method.Name}</a></li>");
                 }
             }
 
-            var index = "<ul><li><a href=\"#ctor\">Constructor</a></li><li><a href=\"#vars\">Variables</a>";
+            var index = $"<ul><li>{GetImg("ctor")} <a href=\"#ctor\">Constructor</a></li>";
             if (varsIndex.Count > 0) {
-                index += "<ul>";
-                index += string.Join(Environment.NewLine, varsIndex);
-                index += "</ul>";
+                index += $"<li>{GetImg("variable")} <a href=\"#vars\">Variables</a>";
+                if (varsIndex.Count > 0) {
+                    index += "<ul>";
+                    index += string.Join(Environment.NewLine, varsIndex);
+                    index += "</ul>";
+                }
+                index += "</li>";
             }
-            index += "</li><li><a href=\"#get-set\">Getters &amp; Setters</a>";
             if (getsetIndex.Count > 0) {
-                index += "<ul>";
-                index += string.Join(Environment.NewLine, getsetIndex);
-                index += "</ul>";
+                index += $"<li>{GetImg("accessor", "Getters and Setters")} <a href=\"#get-set\">Getters &amp; Setters</a>";
+                if (getsetIndex.Count > 0) {
+                    index += "<ul>";
+                    index += string.Join(Environment.NewLine, getsetIndex);
+                    index += "</ul>";
+                }
+                index += "</li>";
             }
-            index += "</li><li><a href=\"#methods\">Methods</a>";
             if (methodsIndex.Count > 0) {
-                index += "<ul>";
-                index += string.Join(Environment.NewLine, methodsIndex);
-                index += "</ul>";
+                index += $"<li>{GetImg("method")} <a href=\"#methods\">Methods</a>";
+                if (methodsIndex.Count > 0) {
+                    index += "<ul>";
+                    index += string.Join(Environment.NewLine, methodsIndex);
+                    index += "</ul>";
+                }
+                index += "</li>";
             }
-            index += "</li></ul>";
+            index += "</ul>";
 
             var content = FillTemplate("prototype",
                 ("NAME", prototype.Name),
@@ -156,7 +183,8 @@ namespace DocsEmitter
                 methodsText += ApiMethodToHtml(apiClass.Name, method) + Environment.NewLine;
             }
             var methodList = "<ul>" +
-                string.Join(Environment.NewLine, methods.Select(m => $"<li><a href=\"#method-{m.Name}\">{m.Name}</a></li>")) +
+                string.Join(Environment.NewLine, methods
+                    .Select(m => $"<li>{GetImg("method") + GetImg("static")} <a href=\"#method-{m.Name}\">{m.Name}</a></li>")) +
                 "</ul>";
             var content = FillTemplate("apiclass",
                 ("NAME", apiClass.Name),
@@ -206,12 +234,12 @@ namespace DocsEmitter
             var nav = "<ul><li><a href=\"index.html\">Home</a></li></ul>";
             nav += "<h4>Api Classes</h4><ul>";
             foreach (var apiClass in _apiClasses) {
-                nav += $"<li><a href=\"api-{GetClassLink(apiClass.Name)}\">{apiClass.Name}</a></li>";
+                nav += $"<li>{GetImg("apiclass")} <a href=\"api-{GetClassLink(apiClass.Name)}\">{apiClass.Name}</a></li>";
             }
             nav += "</ul>";
             nav += "<h4>Prototypes</h4><ul>";
             foreach (var protoype in _prototypes) {
-                nav += $"<li><a href=\"proto-{GetClassLink(protoype.Name)}\">{protoype.Name}</a></li>";
+                nav += $"<li>{GetImg("prototype")} <a href=\"proto-{GetClassLink(protoype.Name)}\">{protoype.Name}</a></li>";
             }
             nav += "</ul>";
             return nav;
@@ -240,7 +268,8 @@ namespace DocsEmitter
         {
             var shortClassName = className[0].ToString().ToLower();
             return $"<div id=\"var-{variable.Name}\">" +
-                $"<code><b>{variable.Name}</b>: <span class=\"arg-type\">{variable.Type}</span></code>" +
+                $"{GetImg("variable", "Variable")} <b>{variable.Name}</b><br /><br />" +
+                $"<code>Type: <span class=\"arg-type\">{variable.Type}</span></code>" +
                 $"<code>Usage:<br />" +
                 $"- get: <span class=\"arg-type\">var</span> {variable.Name} = {shortClassName}.{variable.Name};<br />" +
                 $"- set: {shortClassName}.{variable.Name} = {variable.Name};</code></div><hr />";
@@ -269,10 +298,18 @@ namespace DocsEmitter
             }
 
             var id = "method";
+            var img = GetImg("method");
             if (method.IsGetter) {
                 id = "get";
+                img = GetImg("getter", "Getter");
             } else if (method.IsSetter) {
                 id = "set";
+                img = GetImg("setter", "Setter");
+            } else if (method.IsConstructor) {
+                img = GetImg("ctor", "Constructor");
+            }
+            if (method.IsStatic) {
+                img += GetImg("static", "Static Method");
             }
 
             var prefix = "";
@@ -280,7 +317,7 @@ namespace DocsEmitter
                 prefix = "(" + id + ") ";
             }
 
-            var html = $"<h4 id=\"{id}-{method.Name}\">{prefix}{method.Name}</h4>";
+            var html = $"<span class=\"method-title\">{img}</span> <b id=\"{id}-{method.Name}\">{prefix}{method.Name}</b><br />";
             if (method.IsStatic) {
                 html += $"<i>Static</i><br />";
             }
@@ -365,6 +402,11 @@ namespace DocsEmitter
 
             html += "<hr />";
             return html;
+        }
+
+        private static string GetImg(string img, string tooltip = "")
+        {
+            return $"<img src=\"assets/img/{img}.png\" alt=\"{tooltip}\" title=\"{tooltip}\" />";
         }
     }
 }

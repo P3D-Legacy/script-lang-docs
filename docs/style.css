@@ -43,3 +43,11 @@ h4 {
 h3 {
   background-color: rgb(240, 240, 240);
 }
+
+.method-img img {
+  vertical-align: middle;
+}
+
+h1 img {
+  width: 24px;
+}

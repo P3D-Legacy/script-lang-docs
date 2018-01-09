@@ -80,7 +80,7 @@ namespace DocsEmitter
             if (prototype.Variables.Length > 0) {
                 varsText = "";
                 foreach (var variable in prototype.Variables) {
-                    varsText += ApiVariableToHtml(prototype.Name, variable);
+                    varsText += ApiVariableToHtml(prototype.Name, variable) + Environment.NewLine;
                     varsIndex.Add($"<li><a href=\"#var-{variable.Name}\">{variable.Name}</a></li>");
                 }
             }
@@ -94,7 +94,7 @@ namespace DocsEmitter
                 getsetText = "";
                 foreach (var methodSet in getsets) {
                     foreach (var getset in methodSet) {
-                        getsetText += ApiMethodToHtml(prototype.Name, getset);
+                        getsetText += ApiMethodToHtml(prototype.Name, getset) + Environment.NewLine;
                         var getsetid = "get";
                         if (getset.IsSetter) {
                             getsetid = "set";
@@ -111,7 +111,7 @@ namespace DocsEmitter
             if (methods.Length > 0) {
                 methodsText = "";
                 foreach (var method in methods) {
-                    methodsText += ApiMethodToHtml(prototype.Name, method);
+                    methodsText += ApiMethodToHtml(prototype.Name, method) + Environment.NewLine;
                     methodsIndex.Add($"<li><a href=\"#method-{method.Name}\">{method.Name}</a></li>");
                 }
             }
@@ -153,7 +153,7 @@ namespace DocsEmitter
             var methods = apiClass.Methods.OrderBy(m => m.Name).ToArray();
             var methodsText = "";
             foreach (var method in methods) {
-                methodsText += ApiMethodToHtml(apiClass.Name, method);
+                methodsText += ApiMethodToHtml(apiClass.Name, method) + Environment.NewLine;
             }
             var methodList = "<ul>" +
                 string.Join(Environment.NewLine, methods.Select(m => $"<li><a href=\"#method-{m.Name}\">{m.Name}</a></li>")) +

@@ -203,7 +203,7 @@ namespace DocsEmitter
 
         private string GenerateNav()
         {
-            var nav = "";
+            var nav = "<ul><li><a href=\"index.html\">Home</a></li></ul>";
             nav += "<h4>Api Classes</h4><ul>";
             foreach (var apiClass in _apiClasses) {
                 nav += $"<li><a href=\"api-{GetClassLink(apiClass.Name)}\">{apiClass.Name}</a></li>";

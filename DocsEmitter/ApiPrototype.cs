@@ -52,9 +52,7 @@ namespace DocsEmitter
                     return new ApiMethod
                     {
                         Name = methodDef.VariableName,
-                        IsConstructor = methodDef.FunctionType == ScriptFunctionType.Constructor,
-                        IsGetter = methodDef.FunctionType == ScriptFunctionType.Getter,
-                        IsSetter = methodDef.FunctionType == ScriptFunctionType.Setter,
+                        FunctionType = methodDef.FunctionType,
                         IsStatic = methodDef.IsStatic,
                         Signatures = m.GetCustomAttributes(apiMethodSignatureAttributeType, true).Select(s =>
                         {

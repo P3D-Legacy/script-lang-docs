@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kolben.Adapters;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -69,10 +70,10 @@ namespace DocsEmitter
 
         private void EmitPrototype(ApiPrototype prototype)
         {
-            var ctor = prototype.Methods.FirstOrDefault(m => m.IsConstructor);
+            var ctor = prototype.Methods.FirstOrDefault(m => m.FunctionType == ScriptFunctionType.Constructor);
             var shortClassName = prototype.Name[0].ToString().ToLower();
             var ctorText = $"<code><span class=\"arg-type\">var</span> {shortClassName} = <span class=\"arg-type\">new</span> <b>{prototype.Name}</b>();</code>";
-            if (ctor.IsConstructor) {
+            if (ctor.FunctionType == ScriptFunctionType.Constructor) {
                 ctorText = ApiMethodToHtml(prototype.Name, ctor);
             }
 
@@ -91,9 +92,9 @@ namespace DocsEmitter
 
             var getsetText = "-- No Getters &amp; Setters --";
             var getsets = prototype.Methods
-                    .Where(m => !m.IsConstructor && (m.IsGetter || m.IsSetter))
+                    .Where(m => m.IsAccessor)
                     .OrderBy(m => m.Name)
-                    .GroupBy(m => m.IsGetter);
+                    .GroupBy(m => m.FunctionType);
             if (getsets.Count() > 0) {
                 getsetText = "";
                 foreach (var methodSet in getsets) {
@@ -104,7 +105,7 @@ namespace DocsEmitter
                         if (getset.IsStatic) {
                             img += GetImg("static", "Static Getter");
                         }
-                        if (getset.IsSetter) {
+                        if (getset.FunctionType == ScriptFunctionType.Setter) {
                             getsetid = "set";
                             img = GetImg("setter", "Setter");
                             if (getset.IsStatic) {
@@ -118,7 +119,7 @@ namespace DocsEmitter
 
             var methodsText = "-- No Methods --";
             var methods = prototype.Methods
-                    .Where(m => !m.IsConstructor && !m.IsGetter && !m.IsSetter)
+                    .Where(m => m.FunctionType == ScriptFunctionType.Standard)
                     .OrderBy(m => m.Name).ToArray();
             if (methods.Length > 0) {
                 methodsText = "";
@@ -130,6 +131,29 @@ namespace DocsEmitter
                         img += GetImg("static");
                     }
                     methodsIndex.Add($"<li>{img} <a href=\"#method-{method.Name}\">{method.Name}</a></li>");
+                }
+            }
+
+            var indexersText = "-- No Indexers --";
+            var hasIndexer = false;
+            var indexerGetIndex = "";
+            var indexerSetIndex = "";
+            var indexers = prototype.Methods
+                .Where(m => m.IsIndexer)
+                .GroupBy(m => m.FunctionType);
+            if (indexers.Count() > 0) {
+                indexersText = "";
+                hasIndexer = true;
+                foreach (var group in indexers) {
+                    foreach (var indexer in group) {
+                        if (indexer.FunctionType == ScriptFunctionType.IndexerGet) {
+                            indexerGetIndex = $"<li>{GetImg("indexer-get")} <a href=\"#index-get-{indexer.Name}\">(get) indexer</a></li>";
+                        }
+                        if (indexer.FunctionType == ScriptFunctionType.IndexerSet) {
+                            indexerGetIndex = $"<li>{GetImg("indexer-set")} <a href=\"#index-set-{indexer.Name}\">(set) indexer</a></li>";
+                        }
+                        indexersText += ApiMethodToHtml(prototype.Name, indexer) + Environment.NewLine;
+                    }
                 }
             }
 
@@ -161,6 +185,12 @@ namespace DocsEmitter
                 }
                 index += "</li>";
             }
+            if (hasIndexer) {
+                index += $"<li>{GetImg("indexer")} <a href=\"#indexers\">Indexers</a></li><ul>";
+                index += indexerGetIndex;
+                index += indexerSetIndex;
+                index += "</ul>";
+            }
             index += "</ul>";
 
             var content = FillTemplate("prototype",
@@ -170,7 +200,8 @@ namespace DocsEmitter
                 ("VARS", varsText),
                 ("GETTERSSETTERS", getsetText),
                 ("METHODS", methodsText),
-                ("SOURCELINK", prototype.GetSourceLink()));
+                ("SOURCELINK", prototype.GetSourceLink()),
+                ("INDEXERS", indexersText));
 
             var fileName = "proto-" + GetClassLink(prototype.Name);
             EmitPage(fileName, prototype.Name, content);
@@ -304,30 +335,50 @@ namespace DocsEmitter
 
             var id = "method";
             var img = GetImg("method");
-            if (method.IsGetter) {
-                id = "get";
-                img = GetImg("getter", "Getter");
-            } else if (method.IsSetter) {
-                id = "set";
-                img = GetImg("setter", "Setter");
-            } else if (method.IsConstructor) {
-                img = GetImg("ctor", "Constructor");
+            switch (method.FunctionType) {
+                case ScriptFunctionType.Getter:
+                    id = "get";
+                    img = GetImg("getter", "Getter");
+                    break;
+                case ScriptFunctionType.Setter:
+                    id = "set";
+                    img = GetImg("setter", "Setter");
+                    break;
+                case ScriptFunctionType.IndexerGet:
+                    id = "index-get";
+                    img = GetImg("indexer-get", "Indexer");
+                    break;
+                case ScriptFunctionType.IndexerSet:
+                    id = "index-set";
+                    img = GetImg("indexer-set", "Indexer");
+                    break;
+                case ScriptFunctionType.Constructor:
+                    img = GetImg("ctor", "Constructor");
+                    break;
             }
+
             if (method.IsStatic) {
                 img += GetImg("static", "Static Method");
             }
 
             var prefix = "";
-            if (method.IsGetter || method.IsSetter) {
+            if (method.IsAccessor) {
                 prefix = "(" + id + ") ";
             }
 
-            var html = $"<span class=\"method-title\">{img}</span> <b id=\"{id}-{method.Name}\">{prefix}{method.Name}</b><br />";
+            var methodName = method.Name;
+            if (method.FunctionType == ScriptFunctionType.IndexerGet) {
+                methodName = "(get) indexer";
+            } else if (method.FunctionType == ScriptFunctionType.IndexerSet) {
+                methodName = "(set) indexer";
+            }
+
+            var html = $"<span class=\"method-title\">{img}</span> <b id=\"{id}-{method.Name}\">{prefix}{methodName}</b><br />";
             if (method.IsStatic) {
                 html += $"<i>Static</i><br />";
             }
 
-            if (method.IsGetter) {
+            if (method.FunctionType == ScriptFunctionType.Getter) {
                 if (method.Signatures.Length == 1) {
                     var usageText = $"<span class=\"arg-type\">var</span> {method.Name} = {shortClassName}.<b>{method.Name}</b>;";
                     html += $"<br /><div><code>Type: <span class=\"arg-type\">" +
@@ -335,9 +386,9 @@ namespace DocsEmitter
                             .Select(t => LinkType(t))) +
                         $"</span></code><code>Usage: {usageText}</code></div>";
                 }
-            } else if (method.IsSetter) {
+            } else if (method.FunctionType == ScriptFunctionType.Setter) {
                 if (method.Signatures.Length == 1) {
-                    var usageText = $"{shortClassName}.<b>{method.Name}</b> = <i>{method.Name}</i>;";
+                    var usageText = $"{shortClassName}.<b>{method.Name}</b> = {method.Name};";
                     html += $"<br /><div><code>Type: <span class=\"arg-type\">" +
                         string.Join("</span> or <span class=\"arg-type\">", method.Signatures[0].ReturnTypes
                             .Select(t => LinkType(t))) +
@@ -349,7 +400,7 @@ namespace DocsEmitter
                 }
                 foreach (var signature in method.Signatures) {
                     html += $"<br /><div>";
-                    if (!method.IsConstructor) {
+                    if (method.FunctionType != ScriptFunctionType.Constructor) {
                         html += $"<code>Return: <span class=\"arg-type\">" +
                             string.Join("</span> or <span class=\"arg-type\">", signature.ReturnTypes
                                 .Select(t => LinkType(t))) +
@@ -391,8 +442,12 @@ namespace DocsEmitter
                         html += "</code>";
                     }
 
-                    if (method.IsConstructor) {
+                    if (method.FunctionType == ScriptFunctionType.Constructor) {
                         html += $"<code>Usage: <span class=\"arg-type\">var</span> {shortClassName} = <span class=\"arg-type\">new</span> <b>{className}</b>({string.Join(", ", paramArgs)});</code>";
+                    } else if (method.FunctionType == ScriptFunctionType.IndexerGet) {
+                        html += $"<code>Usage: <span class=\"arg-type\">var</span> result = {shortClassName}<b>[{string.Join(", ", paramArgs)}]</b>;</code>";
+                    } else if (method.FunctionType == ScriptFunctionType.IndexerSet) {
+                        html += $"<code>Usage: {shortClassName}<b>[{string.Join(", ", paramArgs)}]</b> = value;</code>";
                     } else {
                         if (signature.ReturnTypes.Length == 1 && signature.ReturnTypes[0] == "void") {
                             html += $"<code>Usage: {shortClassName}.<b>{method.Name}</b>({string.Join(", ", paramArgs)});</code>";

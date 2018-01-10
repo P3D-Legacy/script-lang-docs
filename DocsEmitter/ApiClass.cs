@@ -45,7 +45,7 @@ namespace DocsEmitter
                 foreach (var method in methods) {
                     var signatures = method.GetCustomAttributes(apiMethodSignatureAttributeType, true);
 
-                    var clMethod = new ApiMethod() { IsStatic = true, Name = method.Name };
+                    var clMethod = new ApiMethod() { IsStatic = true, Name = method.Name, FunctionType = ScriptFunctionType.Standard };
                     var clMethodSignatures = new List<ApiMethodSignature>();
                     foreach (var signature in signatures) {
                         var returnTypes = (Type[])apiMethodSignatureAttributeType.GetProperty("ReturnType").GetValue(signature);

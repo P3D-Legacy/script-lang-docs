@@ -12,6 +12,11 @@ namespace DocsEmitter
         public ApiMethod[] Methods;
         public ApiPrototypeVariable[] Variables;
 
+        public string GetSourceLink()
+        {
+            return Program.GIT_REPO_ROOT + $"2.5DHero/2.5DHero/World/ActionScript/V3/Prototypes/{Name}Prototype.vb";
+        }
+
         public static ApiPrototype[] GetApiPrototypes(Assembly assembly)
         {
             // load type

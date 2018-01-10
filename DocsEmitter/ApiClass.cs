@@ -12,6 +12,11 @@ namespace DocsEmitter
         public string Name;
         public ApiMethod[] Methods;
 
+        public string GetSourceLink()
+        {
+            return Program.GIT_REPO_ROOT + $"2.5DHero/2.5DHero/World/ActionScript/V3/ApiClasses/{Name}.vb";
+        }
+
         public static ApiClass[] GetApiClasses(Assembly assembly)
         {
             // load types

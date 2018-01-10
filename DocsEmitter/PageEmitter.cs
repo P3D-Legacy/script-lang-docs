@@ -169,7 +169,8 @@ namespace DocsEmitter
                 ("CONSTRUCTOR", ctorText),
                 ("VARS", varsText),
                 ("GETTERSSETTERS", getsetText),
-                ("METHODS", methodsText));
+                ("METHODS", methodsText),
+                ("SOURCELINK", prototype.GetSourceLink()));
 
             var fileName = "proto-" + GetClassLink(prototype.Name);
             EmitPage(fileName, prototype.Name, content);
@@ -189,7 +190,8 @@ namespace DocsEmitter
             var content = FillTemplate("apiclass",
                 ("NAME", apiClass.Name),
                 ("METHODLIST", methodList),
-                ("METHODS", methodsText));
+                ("METHODS", methodsText),
+                ("SOURCELINK", apiClass.GetSourceLink()));
 
             var fileName = "api-" + GetClassLink(apiClass.Name);
             EmitPage(fileName, apiClass.Name, content);

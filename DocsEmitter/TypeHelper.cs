@@ -37,5 +37,20 @@ namespace DocsEmitter
             }
         }
 
+        public static string LinkType(string typeName)
+        {
+            var target = typeName;
+            if (target.EndsWith("[]")) {
+                target = target.Substring(0, target.Length - 2);
+            }
+            if (target.EndsWith("Prototype")) {
+                var link = "proto-" + PageEmitter.GetClassLink(target.Replace("Prototype", ""));
+                link = $"<a href=\"{link}\">{typeName.Replace("Prototype", "")}</a>";
+                return link;
+            }
+
+            return typeName;
+        }
+
     }
 }

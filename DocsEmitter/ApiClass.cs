@@ -14,7 +14,7 @@ namespace DocsEmitter
 
         public string GetSourceLink()
         {
-            return Program.GIT_REPO_ROOT + $"2.5DHero/2.5DHero/World/ActionScript/V3/ApiClasses/{Name}.vb";
+            return Program.GIT_REPO_ROOT_P3D + $"2.5DHero/2.5DHero/World/ActionScript/V3/ApiClasses/{Name}.vb";
         }
 
         public static ApiClass[] GetApiClasses(Assembly assembly)
@@ -73,6 +73,26 @@ namespace DocsEmitter
             }
 
             return results.ToArray();
+        }
+
+        public string EmitHtml(PageEmitter emitter)
+        {
+            var methods = Methods.OrderBy(m => m.Name).ToArray();
+            var methodsText = "";
+            foreach (var method in methods) {
+                methodsText += method.EmitHtml(Name) + Environment.NewLine;
+            }
+            var methodList = "<ul>" +
+                string.Join(Environment.NewLine, methods
+                    .Select(m => $"<li>{PageEmitter.GetImg("method") + PageEmitter.GetImg("static")} <a href=\"#method-{m.Name}\">{m.Name}</a></li>")) +
+                "</ul>";
+            var content = emitter.FillTemplate("apiclass",
+                ("NAME", Name),
+                ("METHODLIST", methodList),
+                ("METHODS", methodsText),
+                ("SOURCELINK", GetSourceLink()));
+
+            return content;
         }
     }
 }

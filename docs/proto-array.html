@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Array - P3D Docs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/favicon.png">
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>
+                <img src="assets/img/p3d-logo.png" />
+                Pokemon3D Script API Documentation
+            </h1>
+        </div>
+        <div class="content">
+            <div class="nav">
+                <h3>Navigation</h3>
+                <div>
+                    <ul><li><img src="assets/img/home.png" alt="" title="" /> <a href="index.html">Home</a></li></ul><details><summary><img src="assets/img/folder.png" alt="" title="" /> <b>Articles</b></summary><ul><li><img src="assets/img/document.png" alt="" title="" /> <a href="doc-proto-and-apiclass.html">Prototypes and Api Classes</a></li></ul></details><details open><summary><img src="assets/img/folder.png" alt="" title="" /> <b>Built-In types</b></summary><ul><li><img src="assets/img/static.png" alt="" title="" /> <a href="builtin-global-functions.html">Global Functions</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-array.html">Array</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-boolean.html">Boolean</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-number.html">Number</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-object.html">Object</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-string.html">String</a></li></ul></details><details open><summary><img src="assets/img/folder.png" alt="" title="" /> <b>Api Classes</b></summary><ul><li><img src="assets/img/apiclass.png" alt="" title="" /> <a href="api-chat.html">Chat</a></li><li><img src="assets/img/apiclass.png" alt="" title="" /> <a href="api-text.html">Text</a></li></ul></details><details open><summary><b><img src="assets/img/folder.png" alt="" title="" /> Prototypes</b></summary><ul><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-ability.html">Ability</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-battle.html">Battle</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-camera.html">Camera</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-daycare.html">Daycare</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-entity.html">Entity</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-item.html">Item</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-move.html">Move</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-pokemon.html">Pokemon</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-trainer.html">Trainer</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-vector3.html">Vector3</a></li></ul></details>
+                </div>
+            </div>
+            <div class="docs">
+                <h2>
+    <img src="assets/img/prototype.png" /> Array
+</h2>
+
+<p>
+    API documention for the Prototype <b>Array</b>.<br />
+    <i>Prototype for the primitve array[] type.</i><br />
+    <img src="assets/img/cs.png" /> <a target="_blank" href="https://github.com/nilllzz/kolben/tree/master/Kolben/Types/Prototypes/ArrayPrototype.cs">Source code</a>
+</p>
+<h3>Usage</h3>
+<code>
+    <span class="arg-type">var</span> instance = <span class="arg-type">new</span> <b>Array</b>(args);<br />
+    ...<br />
+    <b>instance</b>.method(args);
+</code>
+
+<hr />
+<h3>Index</h3>
+<div>
+    <ul><li><img src="assets/img/ctor.png" alt="" title="" /> <a href="#ctor">Constructor</a></li><li><img src="assets/img/accessor.png" alt="Getters and Setters" title="Getters and Setters" /> <a href="#get-set">Getters &amp; Setters</a><ul><li><img src="assets/img/getter.png" alt="Getter" title="Getter" /> <a href="#get-length">(get) length</a></li></ul></li><li><img src="assets/img/method.png" alt="" title="" /> <a href="#methods">Methods</a><ul><li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-all">all</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-any">any</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-count">count</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-first">first</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-includes">includes</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-last">last</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-pop">pop</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-push">push</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-select">select</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-single">single</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-where">where</a></li></ul></li><li><img src="assets/img/indexer.png" alt="" title="" /> <a href="#indexers">Indexers</a></li><ul><li><img src="assets/img/indexer-get.png" alt="" title="" /> <a href="#index-get-IndexerGet">(get) indexer</a></li><li><img src="assets/img/indexer-set.png" alt="" title="" /> <a href="#index-set-IndexerSet">(set) indexer</a></li></ul></ul>
+</div>
+
+<hr />
+<h3 id="ctor">Constructor</h3>
+<div>
+    <span class="method-title"><img src="assets/img/ctor.png" alt="Constructor" title="Constructor" /></span> <b id="method-constructor">constructor</b><br /><i>Takes any number of arguments, types can be mixed.</i><br /><br /><div><code>Arguments: [<span class="arg-type">any[]</span> ...args]</code><code>Usage: <span class="arg-type">var</span> a = <span class="arg-type">new</span> <b>Array</b>([...args]);</code></div><hr />
+</div>
+
+<h3 id="vars">Variables</h3>
+<div>
+    -- No Variables --
+</div>
+
+<h3 id="get-set">Getters &amp; Setters</h3>
+<div>
+    <span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-length">(get) length</b><br /><i>Gets the amount of items in the array.</i><br /><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> length = a.<b>length</b>;</code></div><hr />
+
+</div>
+
+<h3 id="methods">Methods</h3>
+<div>
+    <span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-all">all</b><br /><i>Returns whether all items in the array conform to a constraint.</i><br /><br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: <span class="arg-type">function</span> constraint</code><code>Usage: <span class="arg-type">var</span> result = a.<b>all</b>(constraint);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-any">any</b><br /><i>If the array contains any items matching the search.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">bool</span></code><code>Usage: <span class="arg-type">var</span> result = a.<b>any</b>();</code></div><br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: <span class="arg-type">function</span> comparer</code><code>Usage: <span class="arg-type">var</span> result = a.<b>any</b>(comparer);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-count">count</b><br /><i>Returns the amount of items in the array that match the search.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> result = a.<b>count</b>();</code></div><br /><div><code>Return: <span class="arg-type">int</span></code><code>Arguments: <span class="arg-type">function</span> comparer</code><code>Usage: <span class="arg-type">var</span> result = a.<b>count</b>(comparer);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-first">first</b><br /><i>Returns the first item in the array that matches the search or <span class="arg-type">undefined</span> for no match.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">any</span></code><code>Usage: <span class="arg-type">var</span> result = a.<b>first</b>();</code></div><br /><div><code>Return: <span class="arg-type">any</span></code><code>Arguments: <span class="arg-type">function</span> comparer</code><code>Usage: <span class="arg-type">var</span> result = a.<b>first</b>(comparer);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-includes">includes</b><br /><i>Determines whether the array includes an item.<br />Comparer example: </i><code>a.includes(item, (a, b) => { a.id == b.id; });</code><i></i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: <span class="arg-type">any</span> item</code><code>Usage: <span class="arg-type">var</span> result = a.<b>includes</b>(item);</code></div><br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: <span class="arg-type">any</span> item, <span class="arg-type">function</span> comparer</code><code>Usage: <span class="arg-type">var</span> result = a.<b>includes</b>(item, comparer);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-last">last</b><br /><i>Returns the last item in the array that matches the search or <span class="arg-type">undefined</span> for no match.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">any</span></code><code>Usage: <span class="arg-type">var</span> result = a.<b>last</b>();</code></div><br /><div><code>Return: <span class="arg-type">any</span></code><code>Arguments: <span class="arg-type">function</span> comparer</code><code>Usage: <span class="arg-type">var</span> result = a.<b>last</b>(comparer);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-pop">pop</b><br /><i>Removes the last item from the array and returns it.</i><br /><br /><div><code>Return: <span class="arg-type">any</span></code><code>Usage: <span class="arg-type">var</span> result = a.<b>pop</b>();</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-push">push</b><br /><i>Adds items to the end of the array.</i><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Arguments: <span class="arg-type">any[]</span> ...items</code><code>Usage: a.<b>push</b>(...items);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-select">select</b><br /><i>Transforms all elements of the array with a transformation function.</i><br /><br /><div><code>Return: <span class="arg-type">any[]</span></code><code>Arguments: <span class="arg-type">function</span> transformer</code><code>Usage: <span class="arg-type">var</span> result = a.<b>select</b>(transformer);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-single">single</b><br /><i>Finds a single item within the array and returns it.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">any</span></code><code>Usage: <span class="arg-type">var</span> result = a.<b>single</b>();</code></div><br /><div><code>Return: <span class="arg-type">any</span></code><code>Arguments: <span class="arg-type">function</span> comparer</code><code>Usage: <span class="arg-type">var</span> result = a.<b>single</b>(comparer);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-where">where</b><br /><i>Filters the array with the given search.</i><br /><br /><div><code>Return: <span class="arg-type">any[]</span></code><code>Arguments: <span class="arg-type">function</span> filter</code><code>Usage: <span class="arg-type">var</span> result = a.<b>where</b>(filter);</code></div><hr />
+
+</div>
+
+<h3 id="indexers">Indexers</h3>
+<div>
+    <span class="method-title"><img src="assets/img/indexer-get.png" alt="Indexer" title="Indexer" /></span> <b id="index-get-IndexerGet">(get) indexer</b><br /><i>Returns the item in the array at index position.</i><br /><br /><div><code>Return: <span class="arg-type">any</span></code><code>Arguments: <span class="arg-type">int</span> index</code><code>Usage: <span class="arg-type">var</span> result = a<b>[index]</b>;</code></div><hr />
+<span class="method-title"><img src="assets/img/indexer-set.png" alt="Indexer" title="Indexer" /></span> <b id="index-set-IndexerSet">(set) indexer</b><br /><i>Overwrites the item in the array at index position.</i><br /><br /><div><code>Arguments: <span class="arg-type">int</span> index</code><code>Usage: a<b>[index]</b> = value;</code></div><hr />
+
+</div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

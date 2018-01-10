@@ -49,10 +49,13 @@
     <Compile Include="ApiMethodSignature.cs" />
     <Compile Include="ApiPrototype.cs" />
     <Compile Include="ApiPrototypeVariable.cs" />
+    <Compile Include="BuiltInTypes.cs" />
     <Compile Include="FileHelper.cs" />
+    <Compile Include="Sections\GlobalFunctionsSection.cs" />
     <Compile Include="PageEmitter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sections\SectionEmitter.cs" />
     <Compile Include="TypeHelper.cs" />
   </ItemGroup>
   <ItemGroup>

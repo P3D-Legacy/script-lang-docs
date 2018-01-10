@@ -1,0 +1,115 @@
+<html>
+<head>
+    <title>String - P3D Docs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/favicon.png">
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>
+                <img src="assets/img/p3d-logo.png" />
+                Pokemon3D Script API Documentation
+            </h1>
+        </div>
+        <div class="content">
+            <div class="nav">
+                <h3>Navigation</h3>
+                <div>
+                    <ul><li><img src="assets/img/home.png" alt="" title="" /> <a href="index.html">Home</a></li></ul><details><summary><img src="assets/img/folder.png" alt="" title="" /> <b>Articles</b></summary><ul><li><img src="assets/img/document.png" alt="" title="" /> <a href="doc-proto-and-apiclass.html">Prototypes and Api Classes</a></li></ul></details><details open><summary><img src="assets/img/folder.png" alt="" title="" /> <b>Built-In types</b></summary><ul><li><img src="assets/img/static.png" alt="" title="" /> <a href="builtin-global-functions.html">Global Functions</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-array.html">Array</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-boolean.html">Boolean</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-number.html">Number</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-object.html">Object</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-string.html">String</a></li></ul></details><details open><summary><img src="assets/img/folder.png" alt="" title="" /> <b>Api Classes</b></summary><ul><li><img src="assets/img/apiclass.png" alt="" title="" /> <a href="api-chat.html">Chat</a></li><li><img src="assets/img/apiclass.png" alt="" title="" /> <a href="api-text.html">Text</a></li></ul></details><details open><summary><b><img src="assets/img/folder.png" alt="" title="" /> Prototypes</b></summary><ul><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-ability.html">Ability</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-battle.html">Battle</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-camera.html">Camera</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-daycare.html">Daycare</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-entity.html">Entity</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-item.html">Item</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-move.html">Move</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-pokemon.html">Pokemon</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-trainer.html">Trainer</a></li><li><img src="assets/img/prototype.png" alt="" title="" /> <a href="proto-vector3.html">Vector3</a></li></ul></details>
+                </div>
+            </div>
+            <div class="docs">
+                <h2>
+    <img src="assets/img/prototype.png" /> String
+</h2>
+
+<p>
+    API documention for the Prototype <b>String</b>.<br />
+    <i>Prototype for the primitive string type.</i><br />
+    <img src="assets/img/cs.png" /> <a target="_blank" href="https://github.com/nilllzz/kolben/tree/master/Kolben/Types/Prototypes/StringPrototype.cs">Source code</a>
+</p>
+<h3>Usage</h3>
+<code>
+    <span class="arg-type">var</span> instance = <span class="arg-type">new</span> <b>String</b>(args);<br />
+    ...<br />
+    <b>instance</b>.method(args);
+</code>
+
+<hr />
+<h3>Index</h3>
+<div>
+    <ul><li><img src="assets/img/ctor.png" alt="" title="" /> <a href="#ctor">Constructor</a></li><li><img src="assets/img/accessor.png" alt="Getters and Setters" title="Getters and Setters" /> <a href="#get-set">Getters &amp; Setters</a><ul><li><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Getter" title="Static Getter" /> <a href="#get-empty">(get) empty</a></li>
+<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /> <a href="#get-length">(get) length</a></li></ul></li><li><img src="assets/img/method.png" alt="" title="" /> <a href="#methods">Methods</a><ul><li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-charAt">charAt</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-concat">concat</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-endsWith">endsWith</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-includes">includes</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-indexOf">indexOf</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-lastIndexOf">lastIndexOf</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-padEnd">padEnd</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-padStart">padStart</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-remove">remove</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-repeat">repeat</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-replace">replace</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-slice">slice</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-split">split</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-startsWith">startsWith</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-toLower">toLower</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-toUpper">toUpper</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-trim">trim</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-trimEnd">trimEnd</a></li>
+<li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-trimStart">trimStart</a></li></ul></li></ul>
+</div>
+
+<hr />
+<h3 id="ctor">Constructor</h3>
+<div>
+    <span class="method-title"><img src="assets/img/ctor.png" alt="Constructor" title="Constructor" /></span> <b id="method-constructor">constructor</b><br /><br /><div><code>Arguments: <span class="arg-type">string</span> value</code><code>Usage: <span class="arg-type">var</span> s = <span class="arg-type">new</span> <b>String</b>(value);</code></div><hr />
+</div>
+
+<h3 id="vars">Variables</h3>
+<div>
+    -- No Variables --
+</div>
+
+<h3 id="get-set">Getters &amp; Setters</h3>
+<div>
+    <span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Method" title="Static Method" /></span> <b id="get-empty">(get) empty</b><br /><i>Static</i><br /><i>Returns an empty string.</i><br /><br /><div><code>Type: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> empty = String.<b>empty</b>;</code></div><hr />
+<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-length">(get) length</b><br /><i>Gets the amount of characters in the string.</i><br /><br /><div><code>Type: <span class="arg-type">int</span></code><code>Usage: <span class="arg-type">var</span> length = s.<b>length</b>;</code></div><hr />
+
+</div>
+
+<h3 id="methods">Methods</h3>
+<div>
+    <span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-charAt">charAt</b><br /><i>Returns a character within the string.</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> index</code><code>Usage: <span class="arg-type">var</span> result = s.<b>charAt</b>(index);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-concat">concat</b><br /><i>Concatenates multiple strings to this string.</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string[]</span> ...strings</code><code>Usage: <span class="arg-type">var</span> result = s.<b>concat</b>(...strings);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-endsWith">endsWith</b><br /><i>Returns whether the string ends with another string.</i><br /><br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: <span class="arg-type">string</span> needle</code><code>Usage: <span class="arg-type">var</span> result = s.<b>endsWith</b>(needle);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-includes">includes</b><br /><i>Returns whether the string contains another string.</i><br /><br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: <span class="arg-type">string</span> needle</code><code>Usage: <span class="arg-type">var</span> result = s.<b>includes</b>(needle);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-indexOf">indexOf</b><br /><i>Returns the index of the first occurrence of a string within this string.</i><br /><br /><div><code>Return: <span class="arg-type">int</span></code><code>Arguments: <span class="arg-type">string</span> needle</code><code>Usage: <span class="arg-type">var</span> result = s.<b>indexOf</b>(needle);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-lastIndexOf">lastIndexOf</b><br /><i>Returns the index of the last occurrence of a string within this string.</i><br /><br /><div><code>Return: <span class="arg-type">int</span></code><code>Arguments: <span class="arg-type">string</span> needle</code><code>Usage: <span class="arg-type">var</span> result = s.<b>lastIndexOf</b>(needle);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-padEnd">padEnd</b><br /><i>Pads the end of the string until the string reaches a certain length.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> targetLength</code><code>Usage: <span class="arg-type">var</span> result = s.<b>padEnd</b>(targetLength);</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> targetLength, <span class="arg-type">string</span> padStr</code><code>Usage: <span class="arg-type">var</span> result = s.<b>padEnd</b>(targetLength, padStr);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-padStart">padStart</b><br /><i>Pads the start of the string until the string reaches a certain length.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> targetLength</code><code>Usage: <span class="arg-type">var</span> result = s.<b>padStart</b>(targetLength);</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> targetLength, <span class="arg-type">string</span> padStr</code><code>Usage: <span class="arg-type">var</span> result = s.<b>padStart</b>(targetLength, padStr);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-remove">remove</b><br /><i>Removes a set of characters from the string.</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> startIndex, [<span class="arg-type">int</span> length]</code><code>Usage: <span class="arg-type">var</span> result = s.<b>remove</b>(startIndex, [length]);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-repeat">repeat</b><br /><i>Repeats the string a number of times.</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> amount</code><code>Usage: <span class="arg-type">var</span> result = s.<b>repeat</b>(amount);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-replace">replace</b><br /><i>Replaces parts within the string with another string.</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string</span> replace, <span class="arg-type">string</span> with</code><code>Usage: <span class="arg-type">var</span> result = s.<b>replace</b>(replace, with);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-slice">slice</b><br /><i>Returns a slice of the string.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> startIndex</code><code>Usage: <span class="arg-type">var</span> result = s.<b>slice</b>(startIndex);</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">int</span> startIndex, <span class="arg-type">int</span> length</code><code>Usage: <span class="arg-type">var</span> result = s.<b>slice</b>(startIndex, length);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-split">split</b><br /><i>Splits the string at a delimiter.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">string[]</span></code><code>Arguments: <span class="arg-type">string[]</span> delimiters, [<span class="arg-type">int</span> limit]</code><code>Usage: <span class="arg-type">var</span> result = s.<b>split</b>(delimiters, [limit]);</code></div><br /><div><code>Return: <span class="arg-type">string[]</span></code><code>Arguments: <span class="arg-type">string</span> delimiter, [<span class="arg-type">int</span> limit]</code><code>Usage: <span class="arg-type">var</span> result = s.<b>split</b>(delimiter, [limit]);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-startsWith">startsWith</b><br /><i>Returns whether the string starts with another string.</i><br /><br /><div><code>Return: <span class="arg-type">bool</span></code><code>Arguments: <span class="arg-type">string</span> needle</code><code>Usage: <span class="arg-type">var</span> result = s.<b>startsWith</b>(needle);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-toLower">toLower</b><br /><i>Converts all alphabetic characters in the string to their lower case counterparts.</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> result = s.<b>toLower</b>();</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-toUpper">toUpper</b><br /><i>Converts all alphabetic characters in the string to their upper case counterparts.</i><br /><br /><div><code>Return: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> result = s.<b>toUpper</b>();</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-trim">trim</b><br /><i>Trims characters from the start and end of the string.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> result = s.<b>trim</b>();</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string</span> trimChar</code><code>Usage: <span class="arg-type">var</span> result = s.<b>trim</b>(trimChar);</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string[]</span> trimChars</code><code>Usage: <span class="arg-type">var</span> result = s.<b>trim</b>(trimChars);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-trimEnd">trimEnd</b><br /><i>Trims characters from the end of the string.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> result = s.<b>trimEnd</b>();</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string</span> trimChar</code><code>Usage: <span class="arg-type">var</span> result = s.<b>trimEnd</b>(trimChar);</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string[]</span> trimChars</code><code>Usage: <span class="arg-type">var</span> result = s.<b>trimEnd</b>(trimChars);</code></div><hr />
+<span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-trimStart">trimStart</b><br /><i>Trims characters from the start of the string.</i><br /><br />Signatures:<br /><div><code>Return: <span class="arg-type">string</span></code><code>Usage: <span class="arg-type">var</span> result = s.<b>trimStart</b>();</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string</span> trimChar</code><code>Usage: <span class="arg-type">var</span> result = s.<b>trimStart</b>(trimChar);</code></div><br /><div><code>Return: <span class="arg-type">string</span></code><code>Arguments: <span class="arg-type">string[]</span> trimChars</code><code>Usage: <span class="arg-type">var</span> result = s.<b>trimStart</b>(trimChars);</code></div><hr />
+
+</div>
+
+<h3 id="indexers">Indexers</h3>
+<div>
+    -- No Indexers --
+</div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

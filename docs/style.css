@@ -23,6 +23,7 @@ body {
 }
 
 code {
+  font-family: Consolas, Courier, monospace;
   display: block;
   background-color: rgb(230, 230, 230);
   padding: 10px;
@@ -34,7 +35,16 @@ h4 {
 }
 
 .arg-type {
+  background-color: rgb(230, 230, 230);
   color: blue;
+  font-family: Consolas, Courier, monospace;
+  text-decoration: none;
+}
+
+.code-string {
+  background-color: rgb(230, 230, 230);
+  color: darkred;
+  font-family: Consolas, Courier, monospace;
   text-decoration: none;
 }
 

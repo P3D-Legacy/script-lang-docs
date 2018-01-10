@@ -233,17 +233,20 @@ namespace DocsEmitter
 
         private string GenerateNav()
         {
-            var nav = "<ul><li><a href=\"index.html\">Home</a></li></ul>";
-            nav += "<h4>Api Classes</h4><ul>";
+            var nav = $"<ul><li>{GetImg("home")} <a href=\"index.html\">Home</a></li></ul>";
+            nav += $"<details><summary>{GetImg("folder")} <b>Articles</b></summary><ul>" +
+                $"<li>{GetImg("document")} <a href=\"doc-proto-and-apiclass.html\">Prototypes and Api Classes</a></li>";
+            nav += "</ul></details>";
+            nav += $"<details open><summary>{GetImg("folder")} <b>Api Classes</b></summary><ul>";
             foreach (var apiClass in _apiClasses) {
                 nav += $"<li>{GetImg("apiclass")} <a href=\"api-{GetClassLink(apiClass.Name)}\">{apiClass.Name}</a></li>";
             }
-            nav += "</ul>";
-            nav += "<h4>Prototypes</h4><ul>";
+            nav += "</ul></details>";
+            nav += $"<details open><summary><b>{GetImg("folder")} Prototypes</b></summary><ul>";
             foreach (var protoype in _prototypes) {
                 nav += $"<li>{GetImg("prototype")} <a href=\"proto-{GetClassLink(protoype.Name)}\">{protoype.Name}</a></li>";
             }
-            nav += "</ul>";
+            nav += "</ul></details>";
             return nav;
         }
 

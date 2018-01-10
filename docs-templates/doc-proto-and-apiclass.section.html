@@ -1,0 +1,41 @@
+TITLE=Protoypes and Api Classes;
+<h2><img src="assets/img/document.png" /> Prototypes and Api Classes</h2>
+
+<p>
+    When writing scripts, there are two essential API components that can be used in <i>Kolben</i>:
+    <ul>
+        <li>Api Classes</li>
+        <li>Prototypes</li>
+    </ul>
+    This document covers the differences and the basic how-to for both component types.
+</p>
+
+<p>
+    <h3>Api Classes</h3>
+    The simpler of the two are called <b>Api Classes</b>.<br />
+    They only offer standard static functions, getters and setters.<br />
+    To use an Api Class, an <span class="arg-type">import</span> statement has to be used before using the Api Class itself.
+</p>
+<p>
+    An example for importing an Api Class for usage might look like this:
+    <code><span class="arg-type">import</span> TextBox <span class="arg-type">from</span> <span class="code-string">"Text"</span>;</code>
+    This import statement contains two elements, the first (<i>TextBox</i>) sets the alias used within the script for this Api Class, the second (<i>Text</i>) where to import from.<br />
+    The alias can be chosen freely, the source has to be exactly as defined in the game.
+</p>
+<p>
+    Example usage of the above import statement:
+    <code>TextBox.show(<span class="code-string">"Hello, World!"</span>);</code>
+</p>
+<p>
+    A major advantage of Api Classes over Prototypes is that they can block script execution for user input.<br />
+    In the above example, the script execution pauses until the textbox has been closed by the user.<br />
+    No further script code is required to achieve this functionality.
+</p>
+
+<p>
+    <h3>Prototypes</h3>
+    The more complex of the two is called <b>Prototype</b>.<br />
+    <i>Kolben</i> is based on a Protoype-based object oriented class system. All built in types like <i>string</i> are also built using Prototypes.<br />
+    At the first script execution by the game, the <i>Kolben</i> engine gathers all prototypes provided by the game and loads them to be used in every script, no importing required.<br />
+    Each Prototype provided by the game has its own section in this documentation and describes how to use its various features.
+</p>

@@ -1,5 +1,6 @@
 ﻿using Kolben.Adapters;
 using System;
+using System.Linq;
 
 namespace DocsEmitter
 {
@@ -40,16 +41,32 @@ namespace DocsEmitter
         public static string LinkType(string typeName)
         {
             var target = typeName;
+            var link = typeName;
+            var isArr = false;
+
             if (target.EndsWith("[]")) {
                 target = target.Substring(0, target.Length - 2);
+                isArr = true;
             }
             if (target.EndsWith("Prototype")) {
-                var link = "proto-" + PageEmitter.GetClassLink(target.Replace("Prototype", ""));
-                link = $"<a href=\"{link}\">{typeName.Replace("Prototype", "")}</a>";
-                return link;
+                var href = "proto-" + PageEmitter.GetClassLink(target.Replace("Prototype", ""));
+                link = $"<a href=\"{href}\">{target.Replace("Prototype", "")}</a>";
+            } else if (new[] { "undefined", "void", "int", "any" }.Contains(target)) {
+                var href = $"doc-{target}.html";
+                link = $"<a href=\"{href}\">{target}</a>";
+            } else if (new[] { "bool", "string", "number", "object" }.Contains(target)) {
+                var href = $"proto-{target}.html";
+                if (target == "bool") {
+                    href = "proto-boolean.html";
+                }
+                link = $"<a href=\"{href}\">{target}</a>";
             }
 
-            return typeName;
+            if (isArr) {
+                link += "<a href=\"proto-array.html\">[]</a>";
+            }
+
+            return link;
         }
 
     }

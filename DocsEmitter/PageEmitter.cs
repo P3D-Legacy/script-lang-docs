@@ -156,8 +156,12 @@ namespace DocsEmitter
             var nav = $"<ul><li>{GetImg("home")} <a href=\"index.html\">Home</a></li></ul>";
 
             // articles
-            nav += $"<details><summary>{GetImg("folder")} <b>Articles</b></summary><ul>" +
-                $"<li>{GetImg("document")} <a href=\"doc-proto-and-apiclass.html\">Prototypes and Api Classes</a></li>";
+            nav += $"<details><summary>{GetImg("folder")} <b>Articles</b></summary><ul>";
+            nav += $"<li>{GetImg("document")} <a href=\"doc-proto-and-apiclass.html\">Prototypes and Api Classes</a></li>";
+            nav += $"<li>{GetImg("document")} <a href=\"doc-int.html\">Int</a></li>";
+            nav += $"<li>{GetImg("document")} <a href=\"doc-void.html\">Void</a></li>";
+            nav += $"<li>{GetImg("document")} <a href=\"doc-any.html\">Any</a></li>";
+            nav += $"<li>{GetImg("document")} <a href=\"doc-undefined.html\">Undefined</a></li>";
             nav += "</ul></details>";
 
             // built in types

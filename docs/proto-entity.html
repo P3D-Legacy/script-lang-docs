@@ -35,13 +35,15 @@
 <h3>Index</h3>
 <div>
     <ul><li><img src="assets/img/ctor.png" alt="" title="" /> <a href="#ctor">Constructor</a></li><li><img src="assets/img/accessor.png" alt="Getters and Setters" title="Getters and Setters" /> <a href="#get-set">Getters &amp; Setters</a><ul><li><img src="assets/img/getter.png" alt="Getter" title="Getter" /> <a href="#get-position">(get) position</a></li>
-<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Getter" title="Static Getter" /> <a href="#get-x">(get) x</a></li>
-<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Getter" title="Static Getter" /> <a href="#get-y">(get) y</a></li>
-<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Getter" title="Static Getter" /> <a href="#get-z">(get) z</a></li>
+<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /> <a href="#get-scale">(get) scale</a></li>
+<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /> <a href="#get-x">(get) x</a></li>
+<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /> <a href="#get-y">(get) y</a></li>
+<li><img src="assets/img/getter.png" alt="Getter" title="Getter" /> <a href="#get-z">(get) z</a></li>
 <li><img src="assets/img/setter.png" alt="Setter" title="Setter" /> <a href="#set-position">(set) position</a></li>
-<li><img src="assets/img/setter.png" alt="Setter" title="Setter" /><img src="assets/img/static.png" alt="Static Setter" title="Static Setter" /> <a href="#set-x">(set) x</a></li>
-<li><img src="assets/img/setter.png" alt="Setter" title="Setter" /><img src="assets/img/static.png" alt="Static Setter" title="Static Setter" /> <a href="#set-y">(set) y</a></li>
-<li><img src="assets/img/setter.png" alt="Setter" title="Setter" /><img src="assets/img/static.png" alt="Static Setter" title="Static Setter" /> <a href="#set-z">(set) z</a></li></ul></li></ul>
+<li><img src="assets/img/setter.png" alt="Setter" title="Setter" /> <a href="#set-scale">(set) scale</a></li>
+<li><img src="assets/img/setter.png" alt="Setter" title="Setter" /> <a href="#set-x">(set) x</a></li>
+<li><img src="assets/img/setter.png" alt="Setter" title="Setter" /> <a href="#set-y">(set) y</a></li>
+<li><img src="assets/img/setter.png" alt="Setter" title="Setter" /> <a href="#set-z">(set) z</a></li></ul></li><li><img src="assets/img/method.png" alt="" title="" /> <a href="#methods">Methods</a><ul><li><img src="assets/img/method.png" alt="" title="" /> <a href="#method-remove">remove</a></li></ul></li></ul>
 </div>
 
 <hr />
@@ -57,20 +59,23 @@
 
 <h3 id="get-set">Getters &amp; Setters</h3>
 <div>
-    <span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-position">(get) position</b><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3Prototype</a></span></code><code>Usage: <span class="arg-type">var</span> position = e.<b>position</b>;</code></div><hr />
-<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Method" title="Static Method" /></span> <b id="get-x">(get) x</b><br /><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> x = Entity.<b>x</b>;</code></div><hr />
-<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Method" title="Static Method" /></span> <b id="get-y">(get) y</b><br /><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> y = Entity.<b>y</b>;</code></div><hr />
-<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /><img src="assets/img/static.png" alt="Static Method" title="Static Method" /></span> <b id="get-z">(get) z</b><br /><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> z = Entity.<b>z</b>;</code></div><hr />
-<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /></span> <b id="set-position">(set) position</b><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3Prototype</a></span></code><code>Usage: e.<b>position</b> = <i>position</i>;</code></div><hr />
-<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /><img src="assets/img/static.png" alt="Static Method" title="Static Method" /></span> <b id="set-x">(set) x</b><br /><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Entity.<b>x</b> = <i>x</i>;</code></div><hr />
-<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /><img src="assets/img/static.png" alt="Static Method" title="Static Method" /></span> <b id="set-y">(set) y</b><br /><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Entity.<b>y</b> = <i>y</i>;</code></div><hr />
-<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /><img src="assets/img/static.png" alt="Static Method" title="Static Method" /></span> <b id="set-z">(set) z</b><br /><i>Static</i><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: Entity.<b>z</b> = <i>z</i>;</code></div><hr />
+    <span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-position">(get) position</b><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3</a></span></code><code>Usage: <span class="arg-type">var</span> position = e.<b>position</b>;</code></div><hr />
+<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-scale">(get) scale</b><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3</a></span></code><code>Usage: <span class="arg-type">var</span> scale = e.<b>scale</b>;</code></div><hr />
+<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-x">(get) x</b><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> x = e.<b>x</b>;</code></div><hr />
+<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-y">(get) y</b><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> y = e.<b>y</b>;</code></div><hr />
+<span class="method-title"><img src="assets/img/getter.png" alt="Getter" title="Getter" /></span> <b id="get-z">(get) z</b><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: <span class="arg-type">var</span> z = e.<b>z</b>;</code></div><hr />
+<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /></span> <b id="set-position">(set) position</b><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3</a></span></code><code>Usage: e.<b>position</b> = <i>position</i>;</code></div><hr />
+<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /></span> <b id="set-scale">(set) scale</b><br /><br /><div><code>Type: <span class="arg-type"><a href="proto-vector3.html">Vector3</a></span></code><code>Usage: e.<b>scale</b> = <i>scale</i>;</code></div><hr />
+<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /></span> <b id="set-x">(set) x</b><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: e.<b>x</b> = <i>x</i>;</code></div><hr />
+<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /></span> <b id="set-y">(set) y</b><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: e.<b>y</b> = <i>y</i>;</code></div><hr />
+<span class="method-title"><img src="assets/img/setter.png" alt="Setter" title="Setter" /></span> <b id="set-z">(set) z</b><br /><br /><div><code>Type: <span class="arg-type">number</span></code><code>Usage: e.<b>z</b> = <i>z</i>;</code></div><hr />
 
 </div>
 
 <h3 id="methods">Methods</h3>
 <div>
-    -- No Methods --
+    <span class="method-title"><img src="assets/img/method.png" alt="" title="" /></span> <b id="method-remove">remove</b><br /><br /><div><code>Return: <span class="arg-type">void</span></code><code>Usage: e.<b>remove</b>();</code></div><hr />
+
 </div>
 
             </div>

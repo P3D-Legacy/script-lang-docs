@@ -283,7 +283,7 @@ namespace DocsEmitter
             }
             if (target.EndsWith("Prototype")) {
                 var link = "proto-" + GetClassLink(target.Replace("Prototype", ""));
-                link = $"<a href=\"{link}\">{typeName}</a>";
+                link = $"<a href=\"{link}\">{typeName.Replace("Prototype", "")}</a>";
                 return link;
             }
 
